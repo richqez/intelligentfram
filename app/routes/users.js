@@ -1,10 +1,12 @@
 var User = require('../models/users')
-var config = require('./config/database');
+var config = require('../../config/database');
 
 exports.users = function(req, res){
+
 	User.find({},function(err,users){
 		res.json(users);
 	});
+
 }
 
 exports.signup = function(req, res){
@@ -25,34 +27,29 @@ exports.signup = function(req, res){
       res.json({success: true, msg: 'Successful created new user.'});
     });
   }
-
-exports.authenticate = function(req, res){
-
-	User.findOne({
-    name: req.body.name
-  }, function(err, user) {
-    if (err) throw err;
- 
-    if (!user) {
-      res.send({success: false, msg: 'Authentication failed. User not found.'});
-    } else {
-      // check if password matches
-      user.comparePassword(req.body.password, function (err, isMatch) {
-        if (isMatch && !err) {
-          // if user is found and password is right create a token
-          var token = jwt.encode(user, config.secret);
-          // return the information including token as JSON
-          res.json({success: true, token: 'JWT ' + token});
-        } else {
-          res.send({success: false, msg: 'Authentication failed. Wrong password.'});
-        }
-      });
-    }
-  });
-
 }
 
 
+exports.authenticate = function(req, res){
+	User.findOne({name: req.body.name}, function(err, user) {
 
+    if (err) throw errr
 
+    if (!user) {
+      res.send({success: false, msg: 'Authentication failed. User not found.'});
+
+    }else {
+      // check if password matches
+      user.comparePassword(req.body.password, function (err, isMatch) {
+	        if (isMatch && !err) {
+	          // if user is found and password is right create a token
+	          var token = jwt.encode(user, config.secret);
+	          // return the information including token as JSON
+	          res.json({success: true, token: 'JWT ' + token});
+	        } else {
+	          res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+	        }
+	      })
+    }
+  });
 }

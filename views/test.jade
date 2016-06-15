@@ -1,0 +1,25 @@
+extends template/based
+
+// example for every page page
+
+
+block nav-title 
+  li.active test-navtitle
+
+
+// use span.title 
+// use .description 
+block title-content
+  span.title title-content message
+  .description description conent message
+   
+
+
+// use row in block
+block content 
+  .row
+    .col-md-12
+      h1 ="test row"
+  .row 
+    .col-md-6.col-md-offset-4
+      h1  ="testoffset"

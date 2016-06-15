@@ -1,0 +1,161 @@
+doctype html
+html
+head
+    title Flat Admin V.2 - Free Bootstrap Admin Templates
+         
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    // Fonts
+    link(href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300,400', rel='stylesheet', type='text/css')
+         
+    link(href='http://fonts.googleapis.com/css?family=Lato:300,400,700,900', rel='stylesheet', type='text/css')
+    // CSS Libs
+    link(rel='stylesheet', type='text/css', href='../bower_components/bootstrap/dist/css/bootstrap.min.css')
+         
+    link(rel='stylesheet', type='text/css', href='../bower_components/font-awesome/css/font-awesome.min.css')
+         
+    link(rel='stylesheet', type='text/css', href='../bower_components/animate.css/animate.min.css')
+         
+    link(rel='stylesheet', type='text/css', href='../bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css')
+         
+    link(rel='stylesheet', type='text/css', href='../bower_components/checkbox3/dist/checkbox3.min.css')
+         
+    link(rel='stylesheet', type='text/css', href='../bower_components/datatables/media/css/jquery.dataTables.min.css')
+         
+    link(rel='stylesheet', type='text/css', href='../bower_components/datatables/media/css/dataTables.bootstrap.css')
+         
+    link(rel='stylesheet', type='text/css', href='../bower_components/select2/dist/css/select2.min.css')
+    // CSS App
+    link(rel='stylesheet', type='text/css', href='../css/style.css')
+         
+    link(rel='stylesheet', type='text/css', href='../css/themes/flat-blue.css')
+  body.flat-blue
+    .app-container
+      .row.content-container
+        nav.navbar.navbar-default.navbar-fixed-top.navbar-top
+          .container-fluid
+            .navbar-header
+              button.navbar-expand-toggle(type='button')
+                i.fa.fa-bars.icon
+                                       
+              ol.breadcrumb.navbar-breadcrumb
+                block nav-title 
+                  li.active nav-title
+                                       
+              button.navbar-right-expand-toggle.pull-right.visible-xs(type='button')
+                i.fa.fa-th.icon
+                                 
+            ul.nav.navbar-nav.navbar-right
+              button.navbar-right-expand-toggle.pull-right.visible-xs(type='button')
+                i.fa.fa-times.icon
+                                       
+              li.dropdown
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                  i.fa.fa-comments-o
+                                             
+                ul.dropdown-menu.animated.fadeInDown
+                  li.title
+                     Notification 
+                    span.badge.pull-right 0
+                                                   
+                  li.message
+                     No new notification
+                                       
+              li.dropdown.danger
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                  i.fa.fa-star-half-o
+                    4
+                                             
+                ul.dropdown-menu.danger.animated.fadeInDown
+                  li.title
+                     Notification 
+                    span.badge.pull-right 4
+                                                   
+                  li
+                    ul.list-group.notifications
+                      a(href='#')
+                        li.list-group-item
+                          span.badge 1
+                            
+                          i.fa.fa-exclamation-circle.icon
+                            new registration
+                                                               
+                      a(href='#')
+                        li.list-group-item
+                          span.badge.success 1
+                            
+                          i.fa.fa-check.icon
+                            new orders
+                                                               
+                      a(href='#')
+                        li.list-group-item
+                          span.badge.danger 2
+                            
+                          i.fa.fa-comments.icon
+                            customers messages
+                                                               
+                      a(href='#')
+                        li.list-group-item.message
+                           view all
+                                       
+              li.dropdown.profile
+                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+                   Emily Hart 
+                  span.caret
+                                             
+                ul.dropdown-menu.animated.fadeInDown
+                  li.profile-img
+                    img.profile-img(src='../img/profile/picjumbo.com_HNCK4153_resize.jpg')
+                                                   
+                  li
+                    .profile-info
+                      h4.username Emily Hart
+                                                               
+                      p emily_hart@email.com
+                                                               
+                      .btn-group.margin-bottom-2x(role='group')
+                        button.btn.btn-default(type='button')
+                          i.fa.fa-user
+                            Profile
+                                                                     
+                        button.btn.btn-default(type='button')
+                          i.fa.fa-sign-out
+                            Logout
+                     
+        include side-menu
+        .container-fluid
+          .side-body
+            .page-title
+              block title-content
+            block content
+            
+      footer.app-footer
+        .wrapper
+          span.pull-right &copy; 2015 Copyright.
+               
+      div
+        // Javascript Libs
+        script(type='text/javascript', src='../bower_components/jquery/dist/jquery.min.js')
+                     
+        script(type='text/javascript', src='../bower_components/bootstrap/dist/js/bootstrap.min.js')
+                     
+        script(type='text/javascript', src='../bower_components/Chart.js/dist/Chart.min.js')
+                     
+        script(type='text/javascript', src='../bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js')
+                     
+        script(type='text/javascript', src='../bower_components/matchHeight/jquery.matchHeight-min.js')
+                     
+        script(type='text/javascript', src='../bower_components/datatables/media/js/jquery.dataTables.min.js')
+                     
+        script(type='text/javascript', src='../bower_components/datatables/media/js/dataTables.bootstrap.min.js')
+                     
+        script(type='text/javascript', src='../bower_components/select2/dist/js/select2.full.min.js')
+                     
+        script(type='text/javascript', src='../bower_components/ace-builds/src/ace.js')
+                     
+        script(type='text/javascript', src='../bower_components/ace-builds/src/mode-html.js')
+                     
+        script(type='text/javascript', src='../bower_components/ace-builds/src/theme-github.js')
+        // Javascript
+        script(type='text/javascript', src='../js/app.js')
+                     
+        //script(type='text/javascript', src='../js/index.js')
