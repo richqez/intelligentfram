@@ -106,12 +106,6 @@ passport.deserializeUser(function(id, done) {
  app.use('/',webRoute);
  app.use('/api',userR);
 
-/**
- *  API ROUTE
- */
-// apiRoutes.get('/memberinfo', passport.authenticate('jwt', { session: false}),
-
-// connect the api routes under /api/*
 
 
 
