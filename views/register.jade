@@ -1,8 +1,8 @@
 doctype html
 html
 head
-    title Intelligemt-Fram 
-      
+    title Intelligemt-Fram Register Page 
+         
     meta(name='viewport', content='width=device-width, initial-scale=1')
     
     link(rel='shortcut icon', href='data:image/x-icon;,', type='image/x-icon')
@@ -21,7 +21,9 @@ head
     link(rel='stylesheet', type='text/css', href='../../bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css')
          
     link(rel='stylesheet', type='text/css', href='../../bower_components/checkbox3/dist/checkbox3.min.css')
-
+         
+    link(rel='stylesheet', type='text/css', href='../../bower_components/datatables/media/css/jquery.dataTables.min.css')
+         
     link(rel='stylesheet', type='text/css', href='../../bower_components/datatables/media/css/dataTables.bootstrap.css')
          
     link(rel='stylesheet', type='text/css', href='../../bower_components/select2/dist/css/select2.min.css')
@@ -31,37 +33,58 @@ head
     link(rel='stylesheet', type='text/css', href='../../css/themes/flat-blue.css')
   body.flat-blue.login-page
     .container
-      .login-box
-        div
-          .login-form.row
-            .col-sm-12.text-center.login-header
-              i.login-logo.fa.fa-connectdevelop.fa-5x
-                                       
-              h4.login-title Intelligent-Fram
-                                 
-            .col-sm-12
-                                 
-                form(action="/signin" method="post")
-                  .control
-                    input.form-control(name="username" type='text', value='admin@gmail.com')
-                                                   
-                  .control
-                    input.form-control(name="password" type='password', value='123456')
-                                                   
-                  .login-button.text-center
-                    input.btn.btn-primary(type='submit', value='Login')
-                                       
-              .login-footer
-                span.text-right
-                  a.color-white(href='/register') Signup
+      .login-box(style="max-width:600px")
+        .row  
+          .col-md-12
+            .card(style="margin-top:5%")
+              .card-header
+                .card-title
+                  .title Register
+              .card-body
+                form.form-horizontal(action="/register" method="post")
+                  .form-group
+                      label.col-sm-2.control-label(for='username') Username
+                                                                   
+                      .col-sm-10
+                        input#username.form-control(name="username" type='text', placeholder='Username')
+                                                             
+                    .form-group
+                      label.col-sm-2.control-label(for='password') Password
+                                                                   
+                      .col-sm-10
+                        input#password.form-control(name="password" type='password', placeholder='Password')
+                        
+                  
+                    .form-group
+                      label.col-sm-2.control-label(for='email') Email
+                                                                     
+                      .col-sm-10
+                        input#email.form-control(name="email" type='email', placeholder='email')
+                                                               
+                                                             
+                    .form-group
+                      .col-sm-offset-2.col-sm-10
+                        button.btn.btn-default(type='submit') Submit
+                        button.btn.btn-danger(type='reset') Cancel
+
+            
+            
+                                   
     // Javascript Libs
     script(type='text/javascript', src='../../bower_components/jquery/dist/jquery.min.js')
          
     script(type='text/javascript', src='../../bower_components/bootstrap/dist/js/bootstrap.min.js')
-
+         
+    script(type='text/javascript', src='../../bower_components/Chart.js/dist/Chart.min.js')
+         
     script(type='text/javascript', src='../../bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js')
          
+         
     script(type='text/javascript', src='../../bower_components/matchHeight/jquery.matchHeight-min.js')
+         
+    script(type='text/javascript', src='../../bower_components/datatables/media/js/jquery.dataTables.min.js')
+         
+    script(type='text/javascript', src='../../bower_components/datatables/media/js/dataTables.bootstrap.min.js')
          
     script(type='text/javascript', src='../../bower_components/select2/dist/js/select2.full.min.js')
          
@@ -70,3 +93,5 @@ head
     script(type='text/javascript', src='../../bower_components/ace-builds/src/mode-html.js')
          
     script(type='text/javascript', src='../../bower_components/ace-builds/src/theme-github.js')
+    // Javascript
+    script(type='text/javascript', src='../../js/app.js')

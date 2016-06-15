@@ -11,6 +11,7 @@ var port = process.env.PORT || 9898;
 var jwt = require('jwt-simple');
 var session = require('express-session')
 var cookieParser = require('cookie-parser')
+var flash = require('connect-flash');
 
 
 var LocalStrategy = require('passport-local').Strategy;
@@ -46,18 +47,21 @@ app.use(bodyParser.urlencoded({ extended : false }));
 app.use(bodyParser.json());
 
 app.use(morgan('dev'));
+app.use(flash());
 
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new LocalStrategy(
-  function(username, password, done) {
+  {passReqToCallback: true},
+  function(req,username, password, done) {
     User.findOne({name: username}, function(err, user) {
 
       if (err) throw errr
 
       if (!user) {
+          req.flash("Authentication failed. User not found..")
         return done(null, false, { message: 'Authentication failed. User not found..' });
       }else {
         // check if password matches
@@ -66,6 +70,7 @@ passport.use(new LocalStrategy(
               console.log(user);
   	          return done(null, user);
   	        } else {
+              req.flash("message","Incorrect password")
   	          return done(null, false, { message: 'Incorrect password.' });
   	        }
   	      })
