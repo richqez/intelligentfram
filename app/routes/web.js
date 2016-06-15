@@ -8,6 +8,12 @@ module.exports = (function(){
 
   var web = express.Router();
 
+
+
+  web.get('/',function(req, res){
+      res.redirect('/signin');
+  });
+
   /**
    * ตรวจสอบกาล็อคอิน
    */
