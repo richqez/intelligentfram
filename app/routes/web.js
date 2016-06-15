@@ -1,20 +1,48 @@
 
 var passport = require('passport');
+var express = require('express');
 
-exports.home =  function (req,res){
-  res.render('test.jade');
-}
+module.exports = (function(){
+
+  'use strict';
+
+  var web = express.Router();
+
+  // middle auth
+  var isAuthenticated = function (req, res, next) {
+    if (req.isAuthenticated())
+      return next();
+    res.redirect('/signin');
+  }
 
 
-exports.viewLoginPage = function(req,res){
 
-  res.render('login.jade');
+  /**
+   *
+   */
+   web.get('/signin',function(req,res){
+     res.render('login.jade');
+   })
 
-}
+  /**
+   *
+   */
+   web.post('/signin',passport.authenticate('local',{successRedirect: '/account',failureRedirect: '/signin',failureFlash: false }),function(req,res){
 
-exports.login = function(req,res){
-  res.json({
-    "username" : req.body.username,
-    "password" : req.body.password
-  });
-}
+   });
+
+
+  /**
+   *
+   */
+  web.get('/account',isAuthenticated,function (req,res){
+    res.render('test.jade');
+  })
+
+
+
+
+  return web ;
+
+
+})();

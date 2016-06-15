@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var config = require('./config/database');
 var User = require('./app/models/users')
-var port = process.env.PORT || 9000;
+var port = process.env.PORT || 9898;
 var jwt = require('jwt-simple');
 var session = require('express-session')
 var cookieParser = require('cookie-parser')
@@ -17,7 +17,7 @@ var LocalStrategy = require('passport-local').Strategy;
 
 
 var userR = require('./app/routes/users');
-var webR = require('./app/routes/web');
+var webRoute = require('./app/routes/web');
 
 
 require('./config/passport')(passport);
@@ -84,25 +84,11 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-var isAuthenticated = function (req, res, next) {
-  if (req.isAuthenticated())
-    return next();
-
-
-  console.log(req.user);
-  res.redirect('/login');
-}
-
 /**
  *  Web app ROUTE
  */
-app.get('/account',isAuthenticated,webR.home);
-app.get('/login',webR.viewLoginPage);
-app.post('/login',passport.authenticate('local',{
-                                    successRedirect: '/account',
-                                    failureRedirect: '/login',
-                                    failureFlash: false }),webR.login);
 
+ app.use('/',webRoute);
 
 
 /**
