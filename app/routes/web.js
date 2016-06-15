@@ -8,7 +8,9 @@ module.exports = (function(){
 
   var web = express.Router();
 
-  // middle auth
+  /**
+   * ตรวจสอบกาล็อคอิน
+   */
   var isAuthenticated = function (req, res, next) {
     if (req.isAuthenticated())
       return next();
@@ -18,14 +20,14 @@ module.exports = (function(){
 
 
   /**
-   *
+   *  แสดง หน้า login
    */
    web.get('/signin',function(req,res){
      res.render('login.jade');
    })
 
   /**
-   *
+   * ตรวจสอบข้อมูลล็อคอิน
    */
    web.post('/signin',passport.authenticate('local',{successRedirect: '/account',failureRedirect: '/signin',failureFlash: false }),function(req,res){
 
@@ -33,7 +35,7 @@ module.exports = (function(){
 
 
   /**
-   *
+   * แสดงข้อมูลบัญชี
    */
   web.get('/account',isAuthenticated,function (req,res){
     res.render('test.jade');
