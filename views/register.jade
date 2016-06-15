@@ -41,6 +41,9 @@ head
                 .card-title
                   .title Register
               .card-body
+                if message  
+                  .alert.alert-danger
+                    strong #{message}
                 form.form-horizontal(action="/register" method="post")
                   .form-group
                       label.col-sm-2.control-label(for='username') Username

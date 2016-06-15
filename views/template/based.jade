@@ -51,69 +51,18 @@ head
               button.navbar-right-expand-toggle.pull-right.visible-xs(type='button')
                 i.fa.fa-times.icon
                                        
-              li.dropdown
-                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                  i.fa.fa-comments-o
-                                             
-                ul.dropdown-menu.animated.fadeInDown
-                  li.title
-                     Notification 
-                    span.badge.pull-right 0
-                                                   
-                  li.message
-                     No new notification
-                                       
-              li.dropdown.danger
-                a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                  i.fa.fa-star-half-o
-                    4
-                                             
-                ul.dropdown-menu.danger.animated.fadeInDown
-                  li.title
-                     Notification 
-                    span.badge.pull-right 4
-                                                   
-                  li
-                    ul.list-group.notifications
-                      a(href='#')
-                        li.list-group-item
-                          span.badge 1
-                            
-                          i.fa.fa-exclamation-circle.icon
-                            new registration
-                                                               
-                      a(href='#')
-                        li.list-group-item
-                          span.badge.success 1
-                            
-                          i.fa.fa-check.icon
-                            new orders
-                                                               
-                      a(href='#')
-                        li.list-group-item
-                          span.badge.danger 2
-                            
-                          i.fa.fa-comments.icon
-                            customers messages
-                                                               
-                      a(href='#')
-                        li.list-group-item.message
-                           view all
-                                       
+             
               li.dropdown.profile
                 a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
-                   Emily Hart 
-                  span.caret
+                  strong #{currentuser.name}
                                              
                 ul.dropdown-menu.animated.fadeInDown
-                  li.profile-img
-                    img.profile-img(src='../img/profile/picjumbo.com_HNCK4153_resize.jpg')
                                                    
                   li
                     .profile-info
-                      h4.username Emily Hart
+                      h4.username #{currentuser.name}
                                                                
-                      p emily_hart@email.com
+                      p #{currentuser.email}
                                                                
                       .btn-group.margin-bottom-2x(role='group')
                         button.btn.btn-default(type='button')

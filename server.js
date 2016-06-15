@@ -90,6 +90,16 @@ passport.deserializeUser(function(id, done) {
 });
 
 /**
+ *  Helper
+ */
+
+ app.use(function(req,res,next){
+   res.locals.session = req.session;
+   res.locals.currentuser = req.user;
+   next();
+ })
+
+/**
  *  Web app ROUTE
  */
 

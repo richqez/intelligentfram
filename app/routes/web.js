@@ -29,7 +29,7 @@ module.exports = (function(){
   /**
    * ตรวจสอบข้อมูลล็อคอิน
    */
-   web.post('/signin',passport.authenticate('local',{ successRedirect: '/account',failureRedirect: '/signin', failureFlash: true }));
+   web.post('/signin',passport.authenticate('local',{ successRedirect: '/channel',failureRedirect: '/signin', failureFlash: true }));
 
 
    /**
@@ -53,11 +53,7 @@ module.exports = (function(){
 
      newUser.save(function(err){
        if (err) {
-         res.json({
-           name : req.body.username ,
-           password : req.body.password ,
-           email : req.body.email
-         });
+         res.render('register.jade',{message : "Something wrong Please try "})
        }else{
         res.redirect('/signin');
        }
@@ -69,9 +65,23 @@ module.exports = (function(){
   /**
    * แสดงข้อมูลบัญชี
    */
-  web.get('/account',isAuthenticated,function (req,res){
+  web.get('/',isAuthenticated,function (req,res){
     res.render('test.jade');
   })
+
+
+  /**
+   * แสดงข้อมูลบัญชี
+   */
+  web.get('/channel',isAuthenticated,function (req,res){
+    var user = req.user;
+    //console.log(user);
+    res.render('channel.jade');
+
+  })
+
+
+
 
 
 
